@@ -44,9 +44,9 @@ Tuned Random Forest (`min_samples_leaf=3`, `max_features=0.5`): CV R² 0.825. Gr
 | Metric | Value |
 |---|---|
 | R² on log price | 0.840 |
-| R² on price in lakhs | 0.799 |
-| MAE | 22.8 lakhs |
-| RMSE | 58.8 lakhs |
+| R² on price in lakhs | 0.798 |
+| MAE | 22.693 lakhs |
+| RMSE | 58.907 lakhs |
 
 > R² is reported on two scales. The log-price R² is the one used for training and model selection; the lakhs-scale R² is the one that matches rupee prices. Both are valid; they are just different numbers.
 
@@ -56,10 +56,10 @@ Tuned Random Forest (`min_samples_leaf=3`, `max_features=0.5`): CV R² 0.825. Gr
 
 | Actual price (lakhs) | Listings | MAE (lakhs) | Median % error |
 |---|---|---|---|
-| Under 50 | 2,309 | 8.3 | 18.3% |
-| 50–100 | 1,893 | 13.9 | 13.8% |
-| 100–200 | 1,002 | 28.6 | 15.6% |
-| Over 200 | 500 | 111.7 | 21.1% |
+| Under 50 | 2,309 | 8.4 | 18.4% |
+| 50–100 | 1,893 | 13.9 | 13.7% |
+| 100–200 | 1,002 | 28.5 | 15.7% |
+| Over 200 | 500 | 110.4 | 20.3% |
 
 Percentage error stays fairly steady, but errors in lakhs grow quickly for expensive homes, and a few large misses on luxury listings drive the RMSE up. The data has no building age, floor, amenities or exact locality quality, which are what separate expensive homes from each other.
 
