@@ -101,11 +101,11 @@ jupyter notebook notebooks/house_price_prediction.ipynb
 python -m streamlit run app.py
 ```
 ## What I learned
-- Choosing a model with cross-validation and touching the test set once gives an honest score. My first version picked a model using the test set and reported a higher number.
-- A cleaner feature is not automatically a better one. In a quick experiment, the messy address-based city label (which calls much of greater Mumbai "Lalitpur" or "Maharashtra") scored a CV R² of about 0.84, while my geographically correct coordinate-based city scored about 0.82, the same as having no city feature. Splitting Mumbai into distance bands (median price per sq ft fell from about ₹18,300 near the centre to about ₹4,500 at the edge) did not help either, and neither did changing how small a city has to be to get its own category. The coordinates are already in the model, so a clean city adds nothing. Why the messy label carries extra signal, I could not explain. I kept the coordinate-based city because it gives meaningful city names for the app.
-- A single score hides where a model fails; breaking errors down by price band showed it struggles with expensive homes.
-- Checking how a column behaves (price ÷ area is always a whole number) can reveal that it was derived from the answer, which limits how much a score can be trusted.
-- Saving a model means saving everything it needs to predict (columns, city coordinates), or it only works inside the notebook.
+- **Honest evaluation:** My first version chose a model using the test set, which inflated the score. Choosing with cross-validation and using the test set once gave a lower, more honest number.
+- **Cleaner isn't always better:** A messy address-based city label (it called much of greater Mumbai "Lalitpur" or "Maharashtra") scored a CV R² of about 0.84. My coordinate-based city scored about 0.82, the same as having no city feature. The coordinates are probably already doing that job. I still can't explain why the messy label carried extra signal, and I kept the coordinate-based version because it gives readable city names in the app.
+- **One score hides failures:** Splitting errors by price band showed that errors in lakhs grow quickly for expensive homes, even though the percentage error stays fairly steady.
+- **Checking the data itself:** Price ÷ area is always a whole number, so area was almost certainly calculated from price. That means my scores are probably optimistic.
+- **Saving a usable model:** The saved file has to include everything needed to predict (feature columns, city coordinates), or it only works inside the notebook.
 
 ## Limitations & next steps
 - `SQUARE_FT` looks derived from price (see the caveat above).
