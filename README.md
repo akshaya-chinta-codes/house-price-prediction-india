@@ -83,6 +83,7 @@ house-price-prediction-india/
 ├── images/
 ├── models/house_price_model.joblib         # self-contained model bundle
 ├── requirements.txt
+├── requirements-dev.txt
 ├── LICENSE
 └── README.md
 ```
@@ -90,7 +91,8 @@ house-price-prediction-india/
 ## How to run
 Use a recent Python (3.11 or newer). The saved model is a pickle made with scikit-learn 1.9.1, so on a different scikit-learn version it may warn or fail to load. If that happens, run the notebook once: it retrains the model and re-creates `models/house_price_model.joblib` for your setup.
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
+# installs everything for the notebook; the app only needs requirements.txt
 
 # first, download the dataset into data/ (see data/README.md)
 
